@@ -1,5 +1,0 @@
-[build]
-buildCommand = "npm install --prefix backend"
-
-[deploy]
-startCommand = "node backend/index.js"
