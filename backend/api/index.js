@@ -1,4 +1,4 @@
 const app = require('../src/index');
 
-// Don't call app() - just export for Vercel to use
+// This is the Vercel serverless function handler
 module.exports = app;
