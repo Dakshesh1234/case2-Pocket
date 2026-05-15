@@ -5,13 +5,25 @@ const { initDb } = require('./db');
 
 const app = express();
 
+// Initialize DB on startup
+let dbPromise = initDb();
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? process.env.FRONTEND_URL || '*' 
-    : '*',
+  origin: '*',
   credentials: true,
 }));
 app.use(express.json());
+
+// Ensure DB is initialized before handling requests
+app.use(async (req, res, next) => {
+  try {
+    await dbPromise;
+    next();
+  } catch (err) {
+    console.error('DB initialization error:', err);
+    res.status(500).json({ error: 'Database connection failed' });
+  }
+});
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/groups', require('./routes/groups'));
@@ -21,18 +33,4 @@ app.use('/api/notifications', require('./routes/notifications'));
 
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
 
-// Export for Vercel serverless
-if (process.env.VERCEL) {
-  module.exports = app;
-} else {
-  // Local development
-  const PORT = process.env.PORT || 3002;
-  initDb()
-    .then(() => {
-      app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-    })
-    .catch(err => {
-      console.error('Failed to initialize DB:', err);
-      process.exit(1);
-    });
-}
+module.exports = app;
