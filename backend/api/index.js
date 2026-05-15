@@ -3,7 +3,7 @@ const { initDb } = require('../src/db');
 
 let dbInitialized = false;
 
-export default async (req, res) => {
+module.exports = async (req, res) => {
   if (!dbInitialized) {
     await initDb();
     dbInitialized = true;
