@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-medium px-4 py-2 rounded-lg transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow;
+  }
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 active:bg-gray-100 text-gray-700 font-medium px-4 py-2 rounded-lg border border-gray-200 transition-all duration-150 hover:shadow-sm;
+  }
+  .btn-success {
+    @apply bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-medium px-4 py-2 rounded-lg transition-all duration-150 shadow-sm hover:shadow;
+  }
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-medium px-4 py-2 rounded-lg transition-all duration-150;
+  }
+  .btn-ghost {
+    @apply text-gray-500 hover:text-gray-700 hover:bg-gray-100 font-medium px-3 py-2 rounded-lg transition-all duration-150;
+  }
+  .input {
+    @apply w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-shadow placeholder:text-gray-400;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-6 transition-all duration-200;
+  }
+  .card-hover {
+    @apply card hover:shadow-md hover:border-gray-200 hover:-translate-y-0.5 cursor-pointer;
+  }
+  .badge-green {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/10;
+  }
+  .badge-red {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-50 text-red-700 ring-1 ring-inset ring-red-600/10;
+  }
+  .badge-gray {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-50 text-gray-600 ring-1 ring-inset ring-gray-500/10;
+  }
+  .badge-indigo {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-600/10;
+  }
+  .badge-amber {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/10;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes confetti-fall {
+  0%   { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.9); opacity: 0.7; }
+  50%  { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+@keyframes toast-enter {
+  from { transform: translateX(100%) scale(0.9); opacity: 0; }
+  to   { transform: translateX(0) scale(1); opacity: 1; }
+}
+@keyframes toast-exit {
+  from { transform: translateX(0) scale(1); opacity: 1; }
+  to   { transform: translateX(100%) scale(0.9); opacity: 0; }
+}
+@keyframes bar-grow {
+  from { width: 0; }
+}
+@keyframes number-pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-in-up  { animation: fadeInUp 0.4s ease-out both; }
+.animate-fade-in-down{ animation: fadeInDown 0.4s ease-out both; }
+.animate-fade-in     { animation: fadeIn 0.3s ease-out both; }
+.animate-slide-up    { animation: slideUp 0.35s ease-out both; }
+.animate-scale-in    { animation: scaleIn 0.25s ease-out both; }
+.animate-toast-enter { animation: toast-enter 0.35s ease-out both; }
+.animate-toast-exit  { animation: toast-exit 0.3s ease-in both; }
+.animate-bar-grow    { animation: bar-grow 0.8s ease-out both; }
+.animate-pulse-ring  { animation: pulse-ring 2s ease-in-out infinite; }
+
+/* Staggered children */
+.stagger-children > * { animation: fadeInUp 0.35s ease-out both; }
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 50ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 150ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 250ms; }
+.stagger-children > *:nth-child(n+7) { animation-delay: 300ms; }
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 0.5rem;
+}
+
+/* Confetti piece */
+.confetti-piece {
+  position: fixed;
+  z-index: 9999;
+  width: 10px;
+  height: 10px;
+  animation: confetti-fall linear forwards;
+  pointer-events: none;
+}
+
+/* Smooth modal backdrop */
+.modal-backdrop {
+  animation: fadeIn 0.2s ease-out both;
+}
+.modal-content {
+  animation: scaleIn 0.25s ease-out both;
+}
+.modal-content-mobile {
+  animation: slideUp 0.3s ease-out both;
+}
+
+/* Tab indicator transition */
+.tab-active {
+  position: relative;
+}
+.tab-active::after {
+  content: '';
+  @apply absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600 rounded-full;
+  animation: scaleIn 0.2s ease-out both;
+}
+
+/* Number formatting */
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* Scrollbar styling */
+.custom-scroll::-webkit-scrollbar { width: 4px; }
+.custom-scroll::-webkit-scrollbar-track { background: transparent; }
+.custom-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 2px; }
+.custom-scroll::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
