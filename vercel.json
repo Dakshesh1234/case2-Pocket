@@ -2,12 +2,7 @@
   "buildCommand": "npm install && npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
   "outputDirectory": "frontend/dist",
   "framework": "vite",
-  "functions": {
-    "backend/api/index.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/backend/api" }
+    { "source": "/api/(.*)", "destination": "/backend/api/index.js" }
   ]
 }
