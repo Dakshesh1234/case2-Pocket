@@ -16,13 +16,18 @@ app.use('/api/notifications', require('./routes/notifications'));
 
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
 
-const PORT = process.env.PORT || 5000;
-
-initDb()
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
-  .catch(err => {
-    console.error('Failed to initialize DB:', err);
-    process.exit(1);
-  });
+// Export for Vercel serverless
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  // Local development
+  const PORT = process.env.PORT || 3002;
+  initDb()
+    .then(() => {
+      app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    })
+    .catch(err => {
+      console.error('Failed to initialize DB:', err);
+      process.exit(1);
+    });
+}
