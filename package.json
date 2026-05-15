@@ -2,8 +2,8 @@
   "name": "pocket",
   "version": "1.0.0",
   "scripts": {
-    "build": "npm run build --prefix frontend",
-    "start": "npm start --prefix backend"
-  }
+  "build": "npm install --prefix backend",
+  "start": "node backend/server.js"
+}
 }
 
