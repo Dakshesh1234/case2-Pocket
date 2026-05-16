@@ -1,10 +1,6 @@
 # Case 2: Pocket — A Roommate Expense Splitter
 
-**Live demo:** <https://your-app.vercel.app>
-
 **Repo:** <https://github.com/Dakshesh1234/case2-Pocket>
-
-**Demo video:** <https://loom.com/share/xxxxx>
 
 ## What this is
 
