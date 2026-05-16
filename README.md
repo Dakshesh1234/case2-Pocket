@@ -1,7 +1,5 @@
 # Case 2: Pocket — A Roommate Expense Splitter
 
-**Repo:** <https://github.com/Dakshesh1234/case2-Pocket>
-
 ## What this is
 
 Pocket is a lightweight expense splitter for roommates and small groups — log who paid for what, split it however you want, and see the minimum number of transfers needed to settle up. It's for flatmates, trip groups, and couples who don't want to argue over a spreadsheet.
